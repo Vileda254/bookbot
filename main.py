@@ -1,6 +1,6 @@
 def main():
     file_path = "books/frankenstein.txt"
-    print(character_count(file_path))
+    print(generate_report(file_path))
 
 
 def count_words(file_name):
@@ -26,6 +26,18 @@ def character_count(file_name):
                 char_count[char] = 1
 
         return char_count
+    
+def generate_report(file_name):
+    words = count_words(file_name)
+    char_count = character_count(file_name)
+    
+    report = f"--- Begin report of {file_name} ---\n"
+    report += f"{words} words found in the document\n\n"
+    for char, count in char_count.items():
+        report += f"The '{char}' character was found {count} times\n"
+    report += f"--- End report ---"
+
+    return report
     
 
 main()
